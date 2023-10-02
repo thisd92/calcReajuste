@@ -1,0 +1,46 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.calcular-button {
+    background-color: #007bff;
+    /* Cor de fundo do botão */
+    color: #fff;
+    /* Cor do texto */
+    padding: 10px 20px;
+    /* Espaçamento interno do botão */
+    border: none;
+    /* Remova a borda */
+    border-radius: 5px;
+    /* Cantos arredondados */
+    cursor: pointer;
+    /* Cursor de mão ao passar o mouse */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    transition: background-color 0.3s ease;
+    /* Transição de cor suave */
+
+    /* Efeito hover - Altera a cor de fundo quando o mouse passa por cima */
+    &:hover {
+        background-color: #0056b3;
+        /* Nova cor de fundo ao passar o mouse */
+    }
+
+    /* Efeito de foco - Adiciona uma borda ao botão quando ele está em foco */
+    &:focus {
+        outline: none;
+        /* Remove a borda padrão de foco */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        /* Sombra ao redor do botão */
+    }
+}
