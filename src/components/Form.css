@@ -13,6 +13,7 @@ form {
 }
 
 .calcular-button {
+    margin-top: 5px;
     background-color: #007bff;
     /* Cor de fundo do botão */
     color: #fff;
@@ -43,4 +44,15 @@ form {
         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         /* Sombra ao redor do botão */
     }
+}
+
+.results{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.results span{
+    padding: 5px;
 }
