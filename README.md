@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# calcReajuste
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Este repositório contém um projeto React utilizando Redux para calcular o reajuste de contrato com base nos índices IPCA de duas datas fornecidas pelo usuário.
 
-## Available Scripts
+## Descrição do Projeto
 
-In the project directory, you can run:
+O projeto `calcReajuste` é uma aplicação simples desenvolvida em React, que utiliza Redux para gerenciar o estado da aplicação. Ele permite calcular o reajuste de contrato com base nos seguintes passos:
 
-### `npm start`
+1. O usuário informa o valor do índice IPCA na data inicial (data 0) e na data de referência (data N).
+2. A aplicação calcula o percentual de reajuste entre esses dois índices.
+3. Exibe o valor percentual de reajuste calculado.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Funcionalidades
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Entrada de Dados**: O usuário insere os valores dos índices IPCA para data 0 e data N.
+- **Cálculo de Reajuste**: A aplicação calcula o percentual de reajuste com base nos índices fornecidos.
+- **Exibição de Resultado**: Mostra o percentual de reajuste calculado na interface.
 
-### `npm test`
+### Tecnologias Utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Redux**: Biblioteca de gerenciamento de estado para JavaScript/React.
+- **Redux Toolkit**: Pacote oficial recomendado para uso com Redux, que inclui `createSlice` para definição de reducers.
 
-### `npm run build`
+## Configuração do Ambiente de Desenvolvimento
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (versão recomendada)
+- npm ou Yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Executando o Projeto
 
-### `npm run eject`
+1. Clone o repositório para sua máquina local.
+2. Instale as dependências utilizando npm ou Yarn:
+```
+npm install
+```
+ou
+```
+yarn install
+```
+3. Inicie o servidor de desenvolvimento:
+```
+npm start
+```
+ou
+```
+yarn start
+```
+4. Acesse a aplicação em `http://localhost:3000` no navegador.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Estrutura do Redux
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O projeto utiliza Redux para gerenciar o estado da aplicação, com a seguinte estrutura básica:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **Store**: Configurada em `src/app/store.ts`, utilizando `configureStore` do Redux Toolkit.
+- **Slice**: Definido em `src/features/calcular/calcularSlice.ts`, contendo actions e reducers para gerenciar o estado de cálculo de reajuste.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Notas Adicionais
 
-## Learn More
+Este projeto foi desenvolvido como um exercício para aprender os conceitos básicos de Redux e integração com React. Contribuições e sugestões são bem-vindas!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Licença
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+---
+
+Qualquer dúvida ou problema, sinta-se à vontade para abrir uma issue neste repositório.
