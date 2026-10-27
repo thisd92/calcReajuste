@@ -1,0 +1,5 @@
+- **Stack**: TypeScript, React, Next.js (App Router), Tailwind CSS.
+- **Estilo de Código**: Utilize componentes funcionais, prefira `const` sobre `let`, e siga convenções do ES6+.
+- **Tratamento de Erros**: Sempre adicione blocos `try/catch` estruturados em funções assíncronas.
+- **Testes**: Escreva testes unitários usando Vitest para cada utilitário ou hook criado.
+- **Linguagem**: Responda sempre em Português do Brasil, mas mantenha o código e comentários em Inglês.
