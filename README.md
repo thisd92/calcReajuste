@@ -1,70 +1,36 @@
-# calcReajuste
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Este repositório contém um projeto React utilizando Redux para calcular o reajuste de contrato com base nos índices IPCA de duas datas fornecidas pelo usuário.
+## Getting Started
 
-## Descrição do Projeto
+First, run the development server:
 
-O projeto `calcReajuste` é uma aplicação simples desenvolvida em React, que utiliza Redux para gerenciar o estado da aplicação. Ele permite calcular o reajuste de contrato com base nos seguintes passos:
-
-1. O usuário informa o valor do índice IPCA na data inicial (data 0) e na data de referência (data N).
-2. A aplicação calcula o percentual de reajuste entre esses dois índices.
-3. Exibe o valor percentual de reajuste calculado.
-
-### Funcionalidades
-
-- **Entrada de Dados**: O usuário insere os valores dos índices IPCA para data 0 e data N.
-- **Cálculo de Reajuste**: A aplicação calcula o percentual de reajuste com base nos índices fornecidos.
-- **Exibição de Resultado**: Mostra o percentual de reajuste calculado na interface.
-
-### Tecnologias Utilizadas
-
-- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
-- **Redux**: Biblioteca de gerenciamento de estado para JavaScript/React.
-- **Redux Toolkit**: Pacote oficial recomendado para uso com Redux, que inclui `createSlice` para definição de reducers.
-
-## Configuração do Ambiente de Desenvolvimento
-
-### Pré-requisitos
-
-- Node.js (versão recomendada)
-- npm ou Yarn
-
-### Executando o Projeto
-
-1. Clone o repositório para sua máquina local.
-2. Instale as dependências utilizando npm ou Yarn:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
-npm install
-```
-ou
-```
-yarn install
-```
-3. Inicie o servidor de desenvolvimento:
-```
-npm start
-```
-ou
-```
-yarn start
-```
-4. Acesse a aplicação em `http://localhost:3000` no navegador.
 
-## Estrutura do Redux
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-O projeto utiliza Redux para gerenciar o estado da aplicação, com a seguinte estrutura básica:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- **Store**: Configurada em `src/app/store.ts`, utilizando `configureStore` do Redux Toolkit.
-- **Slice**: Definido em `src/features/calcular/calcularSlice.ts`, contendo actions e reducers para gerenciar o estado de cálculo de reajuste.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Notas Adicionais
+## Learn More
 
-Este projeto foi desenvolvido como um exercício para aprender os conceitos básicos de Redux e integração com React. Contribuições e sugestões são bem-vindas!
+To learn more about Next.js, take a look at the following resources:
 
-## Licença
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-Qualquer dúvida ou problema, sinta-se à vontade para abrir uma issue neste repositório.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
