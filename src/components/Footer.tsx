@@ -76,7 +76,7 @@ export function Footer() {
           </span>
           <span className="mt-2 sm:mt-0 font-medium text-gray-600 dark:text-gray-400">
             Desenvolvido por{" "}
-            <strong className="text-blue-600 dark:text-blue-400">Diego</strong>{" "}
+            <strong className="text-blue-600 dark:text-blue-400">Thiago Dutra</strong>{" "}
             • Sistema de Reajuste de Contratos
           </span>
         </div>
