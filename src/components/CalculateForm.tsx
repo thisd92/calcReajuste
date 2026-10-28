@@ -10,6 +10,7 @@ import { IpcaOption } from "@/types/ipca";
 import { DadosCalculo } from "@/types/calculo";
 import { BtnExportPDF } from "@/components/BtnExportPDF";
 import { formatarMoeda, mascararProcessoSEI } from "@/utils/formatter";
+import { validarDatasReajuste } from "@/utils/validators";
 
 export function CalculateForm() {
   const [ipcaLista, setIpcaLista] = useState<IpcaOption[]>([]);
@@ -35,6 +36,8 @@ export function CalculateForm() {
     null,
   );
 
+  const [erroData, setErroData] = useState<string | null>(null);
+
   useEffect(() => {
     async function init() {
       setLoading(true);
@@ -52,6 +55,11 @@ export function CalculateForm() {
   useEffect(() => {
     setIpcaFinal(buscarIndicePorMesAno(ipcaLista, dataReajuste));
   }, [dataReajuste, ipcaLista]);
+
+  useEffect(() => {
+    const erro = validarDatasReajuste(dataProposta, dataReajuste);
+    setErroData(erro ? erro.mensagem : null);
+  }, [dataProposta, dataReajuste]);
 
   const handleCalcular = (e: React.FormEvent) => {
     e.preventDefault();
@@ -215,11 +223,19 @@ export function CalculateForm() {
         />
       </div>
 
+      {/* Alerta de Erro de Validação de Datas */}
+      {erroData && (
+        <div className="p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 rounded-lg text-xs text-red-700 dark:text-red-300 font-medium flex items-center gap-2">
+          <span>⚠️</span>
+          <span>{erroData}</span>
+        </div>
+      )}
+
       {/* Botões de Ação */}
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           type="submit"
-          disabled={!ipcaBase || !ipcaFinal || !valorAtualInput}
+          disabled={!ipcaBase || !ipcaFinal || !valorAtualInput || !!erroData}
           className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm"
         >
           Calcular Reajuste
@@ -270,15 +286,14 @@ export function CalculateForm() {
               Fórmula utilizada: R = P₀ x [(IPCAₙ / IPCA₀) - 1]
             </p>
             <p>
-              • <strong>P₀:</strong>{" "}
-              {formatarMoeda(calculoRealizado.valorAtual)}
+              <strong>P₀:</strong> {formatarMoeda(calculoRealizado.valorAtual)}
             </p>
             <p>
-              • <strong>IPCAₙ ({calculoRealizado.ipcaFinal.label}):</strong>{" "}
+              <strong>IPCAₙ ({calculoRealizado.ipcaFinal.label}):</strong>{" "}
               {calculoRealizado.ipcaFinal.indice}
             </p>
             <p>
-              • <strong>IPCA₀ ({calculoRealizado.ipcaBase.label}):</strong>{" "}
+              <strong>IPCA₀ ({calculoRealizado.ipcaBase.label}):</strong>{" "}
               {calculoRealizado.ipcaBase.indice}
             </p>
           </div>
