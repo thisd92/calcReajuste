@@ -79,6 +79,18 @@ export function CalculateForm() {
     });
   };
 
+  // Função para limpar todos os campos e resetar o estado
+  const handleLimpar = () => {
+    setNumeroContrato("");
+    setNumeroProcesso("");
+    setCredor("");
+    setServico("");
+    setValorAtualInput("");
+    setDataProposta("");
+    setDataReajuste("");
+    setCalculoRealizado(null);
+  };
+
   if (loading) {
     return (
       <div className="p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 animate-pulse space-y-4">
@@ -93,9 +105,20 @@ export function CalculateForm() {
       onSubmit={handleCalcular}
       className="space-y-6 bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm"
     >
-      <h2 className="text-xl font-bold text-gray-800 dark:text-white border-b pb-3 border-gray-100 dark:border-gray-800">
-        Solicitação de Reajuste de Preço
-      </h2>
+      <div className="flex items-center justify-between border-b pb-3 border-gray-100 dark:border-gray-800">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white">
+          Solicitação de Reajuste de Preço
+        </h2>
+
+        {/* Botão secundário de limpar no topo do formulário */}
+        <button
+          type="button"
+          onClick={handleLimpar}
+          className="text-xs font-medium text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 transition-colors flex items-center gap-1"
+        >
+          ✕ Limpar Formulário
+        </button>
+      </div>
 
       {/* Dados do Processo / Contrato */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -189,21 +212,40 @@ export function CalculateForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={!ipcaBase || !ipcaFinal || !valorAtualInput}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm"
-      >
-        Calcular Reajuste
-      </button>
+      {/* Botões de Ação */}
+      <div className="flex flex-col sm:flex-row gap-3">
+        <button
+          type="submit"
+          disabled={!ipcaBase || !ipcaFinal || !valorAtualInput}
+          className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-medium py-2.5 px-5 rounded-lg text-sm transition-colors shadow-sm"
+        >
+          Calcular Reajuste
+        </button>
 
-      {/* Exibição do Resultado e Botão de Exportar PDF */}
-      {/* Resultado do Cálculo + Bloco Explicativo da Fórmula */}
+        <button
+          type="button"
+          onClick={handleLimpar}
+          className="bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-300 font-medium py-2.5 px-5 rounded-lg text-sm transition-colors"
+        >
+          Novo Cálculo / Limpar
+        </button>
+      </div>
+
+      {/* Exibição do Resultado e Exportação do PDF */}
       {calculoRealizado && (
         <div className="mt-6 p-5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-xl space-y-4">
-          <h3 className="font-bold text-gray-800 dark:text-white border-b border-blue-200 dark:border-blue-900 pb-2">
-            Quadro Resumo do Reajuste
-          </h3>
+          <div className="flex items-center justify-between border-b border-blue-200 dark:border-blue-900 pb-2">
+            <h3 className="font-bold text-gray-800 dark:text-white">
+              Quadro Resumo do Reajuste
+            </h3>
+            <button
+              type="button"
+              onClick={handleLimpar}
+              className="text-xs text-blue-700 dark:text-blue-300 hover:underline font-medium"
+            >
+              + Iniciar Novo Cálculo
+            </button>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
             <p>
