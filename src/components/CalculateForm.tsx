@@ -9,6 +9,7 @@ import {
 import { IpcaOption } from "@/types/ipca";
 import { DadosCalculo } from "@/types/calculo";
 import { BtnExportPDF } from "@/components/BtnExportPDF";
+import { formatarMoeda, mascararProcessoSEI } from "@/utils/formatter";
 
 export function CalculateForm() {
   const [ipcaLista, setIpcaLista] = useState<IpcaOption[]>([]);
@@ -143,7 +144,9 @@ export function CalculateForm() {
             type="text"
             placeholder="Ex: 25/2159-0001068-9"
             value={numeroProcesso}
-            onChange={(e) => setNumeroProcesso(e.target.value)}
+            onChange={(e) =>
+              setNumeroProcesso(mascararProcessoSEI(e.target.value))
+            }
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
           />
         </div>
@@ -231,7 +234,7 @@ export function CalculateForm() {
         </button>
       </div>
 
-      {/* Exibição do Resultado e Exportação do PDF */}
+      {/* Resultado do Cálculo */}
       {calculoRealizado && (
         <div className="mt-6 p-5 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900 rounded-xl space-y-4">
           <div className="flex items-center justify-between border-b border-blue-200 dark:border-blue-900 pb-2">
@@ -253,16 +256,11 @@ export function CalculateForm() {
               {calculoRealizado.percentualReajuste.toFixed(4)}%
             </p>
             <p>
-              <strong>Parcela do Reajuste:</strong> R${" "}
-              {calculoRealizado.parcelaReajuste.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-              })}
+              <strong>Parcela do Reajuste:</strong>{" "}
+              {formatarMoeda(calculoRealizado.parcelaReajuste)}
             </p>
             <p className="text-emerald-700 dark:text-emerald-400 font-bold text-sm">
-              Novo Valor: R${" "}
-              {calculoRealizado.valorFinal.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-              })}
+              Novo Valor: {formatarMoeda(calculoRealizado.valorFinal)}
             </p>
           </div>
 
@@ -272,10 +270,8 @@ export function CalculateForm() {
               Fórmula utilizada: R = P₀ x [(IPCAₙ / IPCA₀) - 1]
             </p>
             <p>
-              • <strong>P₀:</strong> R${" "}
-              {calculoRealizado.valorAtual.toLocaleString("pt-BR", {
-                minimumFractionDigits: 2,
-              })}
+              • <strong>P₀:</strong>{" "}
+              {formatarMoeda(calculoRealizado.valorAtual)}
             </p>
             <p>
               • <strong>IPCAₙ ({calculoRealizado.ipcaFinal.label}):</strong>{" "}
